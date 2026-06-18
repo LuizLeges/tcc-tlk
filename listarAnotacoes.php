@@ -1,0 +1,66 @@
+<?php
+session_start();
+$id = $_SESSION['id'];
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>anotações</title>
+    <?php
+    if ($_SESSION['temaEscuro']) {
+        echo '<link rel="stylesheet" href="styleEscuro.css">';
+    } else {
+        echo '<link rel="stylesheet" href="style.css">';
+    }
+    ?>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+    <header>
+        <h1>S.I.G.C[...]</h1>
+        <nav>
+
+        </nav>
+    </header>
+    <ul class="sidenav">
+        <li><a href="index.php?id=<?php echo $id; ?>"><i class="fa-solid fa-house"></i> Início</a></li>
+        <hr>
+        <li><a href="listarAlunos.php?id=<?php echo $id; ?>"><i class="fa-solid fa-user-group"></i> Alunos</a></li>
+        <li><a href="listarResponsaveis.php?id=<?php echo $id; ?>"><i class="fa-solid fa-user-tie"></i> Responsáveis</a></li>
+        <li><a href="listarEstagiario.php?id=<?php echo $id; ?>"><i class="fa-solid fa-user"></i> Estagiários</a></li>
+        <hr>
+        <li><a href="cadastrarPagamentos.php?id=<?php echo $id; ?>"><i class="fa-solid fa-piggy-bank"></i> Mensalidades</a></li>
+        <li><a href="arrecadacao.php?id=<?php echo $id; ?>"><i class="fa-solid fa-hand-holding-dollar"></i> Arrecadação</a></li>
+        <li><a href="despesas.php?id=<?php echo $id; ?>"><i class="fa-solid fa-brazilian-real-sign"></i> Despesas</a></li>
+        <hr>
+        <li><a href="relatorios.php?id=<?php echo $id; ?>"><i class="fa-regular fa-clipboard"></i> Relatórios</a></li>
+        <li><a class="active" href="listarAnotacoes.php?id=<?php echo $id; ?>"><i class="fa-solid fa-note-sticky"></i> Anotações</a></li>
+        <hr>
+        <li><a href="configuracoesUser.php"><i class="fa-solid fa-gear"></i> Preferências</a></li>
+        <hr>
+        <li><a href="destruirSessao.php"><i class="fa-solid fa-right-from-bracket"></i> Sair</a></li>
+    </ul>
+    <div class="main-wrapper">
+        <div
+            style="display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 200px; padding: 30px; margin: 20px auto; max-width: 500px; background-color: #dbffcd; border: 1px solid #ffeeba; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); text-align: center; font-family: sans-serif;">
+            <i class="fa-solid fa-triangle-exclamation" style="color: rgb(0, 107, 146); width: 20px;"></i>
+
+            <h3 style="margin: 0 0 10px 0; color: #1a8504; font-size: 1.4rem;">
+                Setor em manutenção!
+            </h3>
+
+            <p style="margin: 0; color: #1a8504; font-size: 1rem; line-height: 1.5;">
+                Aguarde essa funcionalidade ser lançada. Pode ser que demore... <br> pegue um café!
+            </p>
+        </div>
+    </div>
+
+
+</body>
+
+</html>

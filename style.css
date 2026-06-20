@@ -47,6 +47,7 @@ ul.sidenav {
     top: 50px;
     border-right: 1px solid var(--border-color);
     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.02);
+    overflow-y: auto;
 }
 
 ul.sidenav li a {

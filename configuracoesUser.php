@@ -20,7 +20,7 @@ if (isset($_SESSION['id'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SIGC - Dashboard</title>
+    <title>Configurações</title>
     <?php
     if ($_SESSION['temaEscuro']) {
         echo '<link rel="stylesheet" href="styleEscuro.css">';
@@ -39,27 +39,17 @@ if (isset($_SESSION['id'])) {
 
     <ul class="sidenav">
         <li><a href="index.php?id=<?php echo $id; ?>"><i class="fa-solid fa-house"></i> Início</a></li>
-        <hr>
-        <div style="padding: 10px;"><span style="font-size:15px;">Pessoas</span></div>
+        <hr><div style="padding: 10px;"><span style="font-size:20px;">Pessoas</span></div>
         <li><a href="listarAlunos.php?id=<?php echo $id; ?>"><i class="fa-solid fa-user-group"></i> Alunos</a></li>
-        <li><a href="listarResponsaveis.php?id=<?php echo $id; ?>"><i class="fa-solid fa-user-tie"></i> Responsáveis</a>
-        </li>
+        <li><a href="listarResponsaveis.php?id=<?php echo $id; ?>"><i class="fa-solid fa-user-tie"></i> Responsáveis</a></li>
         <li><a href="listarEstagiario.php?id=<?php echo $id; ?>"><i class="fa-solid fa-user"></i> Estagiários</a></li>
-        <hr>
-        <div style="padding: 10px;"><span style="font-size:15px;">Valores</span></div>
-        <li><a href="cadastrarPagamentos.php?id=<?php echo $id; ?>"><i class="fa-solid fa-piggy-bank"></i>
-                Mensalidades</a></li>
-        <li><a href="arrecadacao.php?id=<?php echo $id; ?>"><i class="fa-solid fa-hand-holding-dollar"></i>
-                Arrecadação</a></li>
-        <li><a href="despesas.php?id=<?php echo $id; ?>"><i class="fa-solid fa-brazilian-real-sign"></i> Despesas</a>
-        </li>
-        <hr>
-        <div style="padding: 10px;"><span style="font-size:15px;">Gestão</span></div>
+        <hr><div style="padding: 10px;"><span style="font-size:20px;">Valores</span></div>
+        <li><a href="listarMensalidades.php?id=<?php echo $id; ?>"><i class="fa-solid fa-piggy-bank"></i> Mensalidades</a></li>
+        <li><a href="despesas.php?id=<?php echo $id; ?>"><i class="fa-solid fa-brazilian-real-sign"></i> Despesas</a></li>
+        <hr><div style="padding: 10px;"><span style="font-size:20px;">Gestão</span></div>
         <li><a href="relatorios.php?id=<?php echo $id; ?>"><i class="fa-regular fa-clipboard"></i> Relatórios</a></li>
-        <li><a href="listarAnotacoes.php?id=<?php echo $id; ?>"><i class="fa-solid fa-note-sticky"></i> Anotações</a>
-        </li>
-        <hr>
-        <div style="padding: 10px;"><span style="font-size:15px;">Configurações</span></div>
+        <li><a href="listarAnotacoes.php?id=<?php echo $id; ?>"><i class="fa-solid fa-note-sticky"></i> Anotações</a></li>
+        <hr><div style="padding: 10px;"><span style="font-size:20px;">Configurações</span></div>
         <li><a class="active" href="configuracoesUser.php"><i class="fa-solid fa-gear"></i> Preferências</a></li>
         <hr>
         <li><a href="destruirSessao.php"><i class="fa-solid fa-right-from-bracket"></i> Sair</a></li>
@@ -80,11 +70,10 @@ if (isset($_SESSION['id'])) {
                     <select name="tema">
                         <option value="claro"></i>Cor: VERDE / Tema: CLARO </option>                        
                         <option value="escuro">Cor: VERDE / Tema: ESCURO</option>                        
-                        <option value="escuro">Mais em breve...</option>                        
-                        <!--<option value="claroAzul">Cor: AZUL / Tema: CLARO</option>                        
-                        <option value="escuroAzul">Cor: AZUL / Tema: ESCURO</option>                        
-                        <option value="claroRosa">Cor: ROSA / Tema: CLARO</option>                        
-                        <option value="EscuroRosa">Cor: ROSA / Tema: ESCURO</option>-->
+                        <option value="claroAzul">(INDISPONÍVEL: em breve) Cor: AZUL / Tema: CLARO</option>                        
+                        <option value="escuroAzul">(INDISPONÍVEL: em breve) Cor: AZUL / Tema: ESCURO</option>                        
+                        <option value="claroRosa">(INDISPONÍVEL: em breve) Cor: ROSA / Tema: CLARO</option>                        
+                        <option value="EscuroRosa">(INDISPONÍVEL: em breve) Cor: ROSA / Tema: ESCURO</option>
                     </select>
                 </label>
             </div>

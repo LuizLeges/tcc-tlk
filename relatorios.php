@@ -29,18 +29,17 @@ $id = $_SESSION['id'];
     </header>
     <ul class="sidenav">
         <li><a href="index.php?id=<?php echo $id; ?>"><i class="fa-solid fa-house"></i> Início</a></li>
-        <hr>
+        <hr><div style="padding: 10px;"><span style="font-size:20px;">Pessoas</span></div>
         <li><a href="listarAlunos.php?id=<?php echo $id; ?>"><i class="fa-solid fa-user-group"></i> Alunos</a></li>
         <li><a href="listarResponsaveis.php?id=<?php echo $id; ?>"><i class="fa-solid fa-user-tie"></i> Responsáveis</a></li>
         <li><a href="listarEstagiario.php?id=<?php echo $id; ?>"><i class="fa-solid fa-user"></i> Estagiários</a></li>
-        <hr>
-        <li><a href="cadastrarPagamentos.php?id=<?php echo $id; ?>"><i class="fa-solid fa-piggy-bank"></i> Mensalidades</a></li>
-        <li><a href="arrecadacao.php?id=<?php echo $id; ?>"><i class="fa-solid fa-hand-holding-dollar"></i> Arrecadação</a></li>
+        <hr><div style="padding: 10px;"><span style="font-size:20px;">Valores</span></div>
+        <li><a href="listarMensalidades.php?id=<?php echo $id; ?>"><i class="fa-solid fa-piggy-bank"></i> Mensalidades</a></li>
         <li><a href="despesas.php?id=<?php echo $id; ?>"><i class="fa-solid fa-brazilian-real-sign"></i> Despesas</a></li>
-        <hr>
+        <hr><div style="padding: 10px;"><span style="font-size:20px;">Gestão</span></div>
         <li><a class="active" href="relatorios.php?id=<?php echo $id; ?>"><i class="fa-regular fa-clipboard"></i> Relatórios</a></li>
         <li><a href="listarAnotacoes.php?id=<?php echo $id; ?>"><i class="fa-solid fa-note-sticky"></i> Anotações</a></li>
-        <hr>
+        <hr><div style="padding: 10px;"><span style="font-size:20px;">Configurações</span></div>
         <li><a href="configuracoesUser.php"><i class="fa-solid fa-gear"></i> Preferências</a></li>
         <hr>
         <li><a href="destruirSessao.php"><i class="fa-solid fa-right-from-bracket"></i> Sair</a></li>

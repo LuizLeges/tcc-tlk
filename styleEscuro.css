@@ -56,17 +56,19 @@ ul.sidenav {
     width: 240px;
     background-color: var(--white);
     position: fixed;
-    height: 100%;
     top: 50px;
+    /* Ajuste aqui: 100vh menos o valor do 'top' */
+    height: calc(100vh - 90px); 
+    max-height: calc(100vh - 90px);
     border-right: 1px solid var(--border-color);
     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+    overflow-y: auto;
 }
 
 ul.sidenav li a {
     display: flex;
     align-items: center;
     color: #b0bec5;
-    /* Cinza claro para links inativos */
     padding: 12px 25px;
     text-decoration: none;
     transition: all 0.3s;

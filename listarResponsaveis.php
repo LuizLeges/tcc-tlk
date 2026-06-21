@@ -30,17 +30,21 @@ include "conecta.php";
     </header>
     <ul class="sidenav">
         <li><a href="index.php?id=<?php echo $id; ?>"><i class="fa-solid fa-house"></i> Início</a></li>
-        <hr><div style="padding: 10px;"><span style="font-size:20px;">Pessoas</span></div>
+        <hr>
+        <div style="padding: 10px;"><span style="font-size:20px;">Pessoas</span></div>
         <li><a href="listarAlunos.php?id=<?php echo $id; ?>"><i class="fa-solid fa-user-group"></i> Alunos</a></li>
         <li><a class="active" href="listarResponsaveis.php?id=<?php echo $id; ?>"><i class="fa-solid fa-user-tie"></i> Responsáveis</a></li>
         <li><a href="listarEstagiario.php?id=<?php echo $id; ?>"><i class="fa-solid fa-user"></i> Estagiários</a></li>
-        <hr><div style="padding: 10px;"><span style="font-size:20px;">Valores</span></div>
+        <hr>
+        <div style="padding: 10px;"><span style="font-size:20px;">Valores</span></div>
         <li><a href="listarMensalidades.php?id=<?php echo $id; ?>"><i class="fa-solid fa-piggy-bank"></i> Mensalidades</a></li>
         <li><a href="despesas.php?id=<?php echo $id; ?>"><i class="fa-solid fa-brazilian-real-sign"></i> Despesas</a></li>
-        <hr><div style="padding: 10px;"><span style="font-size:20px;">Gestão</span></div>
+        <hr>
+        <div style="padding: 10px;"><span style="font-size:20px;">Gestão</span></div>
         <li><a href="relatorios.php?id=<?php echo $id; ?>"><i class="fa-regular fa-clipboard"></i> Relatórios</a></li>
         <li><a href="listarAnotacoes.php?id=<?php echo $id; ?>"><i class="fa-solid fa-note-sticky"></i> Anotações</a></li>
-        <hr><div style="padding: 10px;"><span style="font-size:20px;">Configurações</span></div>
+        <hr>
+        <div style="padding: 10px;"><span style="font-size:20px;">Configurações</span></div>
         <li><a href="configuracoesUser.php"><i class="fa-solid fa-gear"></i> Preferências</a></li>
         <hr>
         <li><a href="destruirSessao.php"><i class="fa-solid fa-right-from-bracket"></i> Sair</a></li>
@@ -50,8 +54,68 @@ include "conecta.php";
             <div class="card">
                 <div class="card-header">Pesquisa</div>
                 <div class="card-body">
-                    <form> <span style="color: orange;"> (Funcionalidade não finalizada)</span>
-                        <input type="text" name="pesquisa" placeholder="Digite o nome do responsável">
+                    <form method="POST" action="">
+                        <p><input type="text" name="pesquisa" placeholder="Digite o nome do responsável"></p>
+                        <button type="submit"><i class="fa-solid fa-magnifying-glass"></i> Pesquisar</button>
+                        <?php
+                        if ($_POST) {
+                            if (isset($_POST['pesquisa'])) {
+                                $pesquisa = $_POST['pesquisa'];
+                                $sql = "SELECT * FROM responsavel WHERE nome LIKE '%$pesquisa%' ORDER BY nome";
+                            } else {
+                                $sql = "SELECT * FROM responsavel ORDER BY nome";
+                                $pesquisa = "";
+                            }
+                            $resultado = mysqli_query($conn, $sql);
+
+                            if (mysqli_num_rows($resultado) > 0) {
+                                $numResultados = 0;
+                                if ($pesquisa != "") {
+                                    echo '<h3>Resultados encontrados para: <span>"' . $pesquisa . '"</span></h3>';
+                                    echo '<table>';
+                                    while ($resPesquisa = mysqli_fetch_assoc($resultado)) {
+                                        $numResultados++;
+                        ?>
+                                        <tr>
+                                            <td>
+                                                <?php echo $resPesquisa['nome']; ?>
+                                            </td>
+                                            <td>
+                                                <?php echo $resPesquisa['telefone']; ?>
+                                            </td>
+                                            <td>
+                                                <?php
+                                                $idAluno = "SELECT nome FROM aluno WHERE id =" . $resPesquisa['id_aluno'];
+                                                $buscaAluno = mysqli_query($conn, $idAluno);
+                                                if (mysqli_num_rows($buscaAluno) > 0) {
+                                                    $nomeAluno = mysqli_fetch_assoc($buscaAluno);
+                                                    echo $nomeAluno['nome'];
+                                                } else {
+                                                    echo '<span style="color:red;">Nenhum aluno associado!</span>';
+                                                }
+                                                ?>
+                                            </td>
+                                            <td>
+                                                <?php echo $resPesquisa['id']; ?>
+                                            </td>
+                                            <td class="acoes">
+                                                <a class="botaoTable" href="editarResponsavel.php?id_resp=<?php echo $resPesquisa['id']; ?>">
+                                                    <button class="botaoTable_editar"> Editar <i class="fa-solid fa-pen-to-square"></i>
+                                                    </button>
+                                                </a>
+                                                <button class="botaoTable_excluir botaoAbrir" data-id="<?php echo $resPesquisa['id']; ?>">
+                                                    Excluir <i class="fa-solid fa-trash-can"></i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                        <?php
+                                    }
+                                    echo '</table>';
+                                    echo '<p><strong>Total de resultados encontrados: ' . $numResultados . '</strong></p>';
+                                }
+                            }
+                        }
+                        ?>
                     </form>
                 </div>
             </div>
@@ -59,7 +123,7 @@ include "conecta.php";
             <div class="card">
                 <div class="card-header">Lista de responsáveis</div>
                 <div class="card-header"><label><a href="cadastrarResponsavel.php"><button><i class="fa-solid fa-user-tie"></i> Cadastrar um novo responsável</button></a></label></div>
-                
+
                 <div class="card-body">
                     <table border="1">
                         <tr>
@@ -75,7 +139,7 @@ include "conecta.php";
                         $numLinhasImpressas = 0;
                         while ($dados = mysqli_fetch_assoc($resultado)) {
                             $numLinhasImpressas++;
-                            ?>
+                        ?>
                             <tr>
                                 <td>
                                     <?php echo $dados['nome']; ?>
@@ -108,12 +172,12 @@ include "conecta.php";
                                     </button>
                                 </td>
                             </tr>
-                            <?php
+                        <?php
                         }
                         if ($numLinhasImpressas == 0) {
-                            ?>
+                        ?>
                             <h3 style="color: red;">Não existem responsáveis cadastrados no sistema!</h3>
-                            <?php
+                        <?php
                         }
                         ?>
                     </table>
@@ -133,7 +197,8 @@ include "conecta.php";
                 </div>
             </dialog>
 </body>
-<script> // nunca mais quero mexer nisso
+<script>
+    // nunca mais quero mexer nisso
     const modal = document.getElementById('modal');
     const cancelar = document.getElementById('cancelar');
     const excluir = document.getElementById('excluir');

@@ -7,7 +7,7 @@ if (isset($_SESSION['id'])) {
     $sqlAdmin = "SELECT * FROM administrador WHERE id= '$id'";
     $resAdmin = mysqli_query($conn, $sqlAdmin);
     $dadosAdmin = mysqli_fetch_assoc($resAdmin);
-    $_SESSION["temaEscuro"] = $dadosAdmin["temaEscuro"];
+    $_SESSION["tema"] = $dadosAdmin["tema"];
 } else {
     header('Location: login.php');
     exit;
@@ -22,10 +22,28 @@ if (isset($_SESSION['id'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Configurações</title>
     <?php
-    if ($_SESSION['temaEscuro']) {
-        echo '<link rel="stylesheet" href="styleEscuro.css">';
-    } else {
-        echo '<link rel="stylesheet" href="style.css">';
+    if($_SESSION['tema'] == 'verdeEscuro') { //VERDE ESCURO
+        echo '<link rel="stylesheet" href="styleVerdeEscuro.css">';
+    } else if ($_SESSION['tema'] == 'verdeClaro') { // VERDE CLARO
+        echo '<link rel="stylesheet" href="styleVerdeClaro.css">';
+    } else if ($_SESSION['tema'] == 'azulEscuro') { // AZUL ESCURO
+        echo '<link rel="stylesheet" href="styleAzulEscuro.css">';
+    } else if ($_SESSION['tema'] == 'azulClaro') { // AZUL CLARO
+        echo '<link rel="stylesheet" href="styleAzulClaro.css">';
+    } else if ($_SESSION['tema'] == 'rosaEscuro') { // ROSA ESCURO
+        echo '<link rel="stylesheet" href="styleRosaEscuro.css">';
+    } else if ($_SESSION['tema'] == 'rosaClaro') { // ROSA CLARO
+        echo '<link rel="stylesheet" href="styleRosaClaro.css">';
+    } else if ($_SESSION['tema'] == 'vermelhoEscuro') { // VERMELHO ESCURO
+        echo '<link rel="stylesheet" href="styleVermelhoEscuro.css">';
+    } else if ($_SESSION['tema'] == 'vermelhoClaro') { // VERMELHO CLARO
+        echo '<link rel="stylesheet" href="styleVermelhoClaro.css">';
+    } else if ($_SESSION['tema'] == 'amareloEscuro') { // AMARELO ESCURO
+        echo '<link rel="stylesheet" href="styleAmareloEscuro.css">';
+    } else if ($_SESSION['tema'] == 'amareloClaro') {// AMARELO CLARO
+        echo '<link rel="stylesheet" href="styleAmareloClaro.css">';
+    } else {// PADRÃO
+        echo '<link rel="stylesheet" href="styleVerdeClaro.css">';
     }
     ?>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -65,20 +83,23 @@ if (isset($_SESSION['id'])) {
                     <p>Essas configurações são alteradas apenas para você. Outro usuário não verá suas escolhas.</p>
                 </div>
                 <hr>    
+                <form action="salvarConfiguracoes.php" method="POST">
                 <label>
                     <p>Tema: <i class="fa-solid fa-sun" style="color: rgb(223, 208, 1);"></i> / <i class="fa-solid fa-moon" style="color: rgb(91, 175, 201);"></i></p>
                     <select name="tema">
-                        <option value="claro"></i>Cor: VERDE / Tema: CLARO </option>                        
-                        <option value="escuro">Cor: VERDE / Tema: ESCURO</option>                        
-                        <option value="claroAzul">(INDISPONÍVEL: em breve) Cor: AZUL / Tema: CLARO</option>                        
-                        <option value="escuroAzul">(INDISPONÍVEL: em breve) Cor: AZUL / Tema: ESCURO</option>                        
-                        <option value="claroRosa">(INDISPONÍVEL: em breve) Cor: ROSA / Tema: CLARO</option>                        
-                        <option value="EscuroRosa">(INDISPONÍVEL: em breve) Cor: ROSA / Tema: ESCURO</option>
+                        <option value="verdeClaro">Cor: VERDE / Tema: CLARO </option>                        
+                        <option value="verdeEscuro">Cor: VERDE / Tema: ESCURO</option>                        
+                        <option value="azulClaro">Cor: AZUL / Tema: CLARO</option>                        
+                        <option value="azulEscuro">Cor: AZUL / Tema: ESCURO</option>                        
+                        <option value="rosaClaro">Cor: ROSA / Tema: CLARO</option>                        
+                        <option value="rosaEscuro">Cor: ROSA / Tema: ESCURO</option>
                     </select>
+                    <br><br>
+                    <input type="submit" value="Salvar" class="btn-salvar">
                 </label>
+                </form>
             </div>
         </div>
     </div>
 </body>
-
 </html>

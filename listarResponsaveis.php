@@ -13,10 +13,28 @@ include "conecta.php";
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Responsáveis</title>
     <?php
-    if ($_SESSION['temaEscuro']) {
-        echo '<link rel="stylesheet" href="styleEscuro.css">';
-    } else {
-        echo '<link rel="stylesheet" href="style.css">';
+    if($_SESSION['tema'] == 'verdeEscuro') { //VERDE ESCURO
+        echo '<link rel="stylesheet" href="styleVerdeEscuro.css">';
+    } else if ($_SESSION['tema'] == 'verdeClaro') { // VERDE CLARO
+        echo '<link rel="stylesheet" href="styleVerdeClaro.css">';
+    } else if ($_SESSION['tema'] == 'azulEscuro') { // AZUL ESCURO
+        echo '<link rel="stylesheet" href="styleAzulEscuro.css">';
+    } else if ($_SESSION['tema'] == 'azulClaro') { // AZUL CLARO
+        echo '<link rel="stylesheet" href="styleAzulClaro.css">';
+    } else if ($_SESSION['tema'] == 'rosaEscuro') { // ROSA ESCURO
+        echo '<link rel="stylesheet" href="styleRosaEscuro.css">';
+    } else if ($_SESSION['tema'] == 'rosaClaro') { // ROSA CLARO
+        echo '<link rel="stylesheet" href="styleRosaClaro.css">';
+    } else if ($_SESSION['tema'] == 'vermelhoEscuro') { // VERMELHO ESCURO
+        echo '<link rel="stylesheet" href="styleVermelhoEscuro.css">';
+    } else if ($_SESSION['tema'] == 'vermelhoClaro') { // VERMELHO CLARO
+        echo '<link rel="stylesheet" href="styleVermelhoClaro.css">';
+    } else if ($_SESSION['tema'] == 'amareloEscuro') { // AMARELO ESCURO
+        echo '<link rel="stylesheet" href="styleAmareloEscuro.css">';
+    } else if ($_SESSION['tema'] == 'amareloClaro') {// AMARELO CLARO
+        echo '<link rel="stylesheet" href="styleAmareloClaro.css">';
+    } else {// PADRÃO
+        echo '<link rel="stylesheet" href="styleVerdeClaro.css">';
     }
     ?>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -120,7 +138,7 @@ include "conecta.php";
                 </div>
             </div>
             <hr>
-            <div class="card">
+            <div class="card" id="divListagem">
                 <div class="card-header">Lista de responsáveis</div>
                 <div class="card-header"><label><a href="cadastrarResponsavel.php"><button><i class="fa-solid fa-user-tie"></i> Cadastrar um novo responsável</button></a></label></div>
 

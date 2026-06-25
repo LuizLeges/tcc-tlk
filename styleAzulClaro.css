@@ -1,23 +1,11 @@
 :root {
-    /* Tons de Verde e Destaques (Suavizados para telas escuras) */
-    --primary: #65c96a;
-    /* Um verde mais claro e confortável para o modo escuro */
-    --primary-light: #185f1b;
-    /* Inversão do gradiente do header */
-    --accent: #4fc3f7;
-    /* Azul mais brilhante para destacar no fundo escuro */
-
-    /* Cores de Fundo e Superfície */
-    --bg-body: #121212;
-    /* Fundo geral escuro (padrão Material Design) */
-    --white: #1e1e1e;
-    /* Superfície dos cards e menus (antigo branco) */
-
-    /* Tipografia e Bordas */
-    --text-dark: #e0e0e0;
-    /* Texto principal claro */
-    --border-color: #333333;
-    /* Bordas sutis escuras */
+    --primary: #1976d2; /* Azul Royal Profissional */
+    --primary-light: #64b5f6; /* Azul claro para gradientes */
+    --accent: #0288d1; /* Azul de destaque */
+    --bg-body: #f4f7f6;
+    --text-dark: #333;
+    --white: #ffffff;
+    --border-color: #e0e0e0;
 }
 
 body {
@@ -29,12 +17,11 @@ body {
 
 /* Header Moderno */
 header {
-    background: linear-gradient(135deg, #1b5e20, var(--primary-light));
-    /* Tons mais fechados */
+    background: linear-gradient(135deg, var(--primary), var(--primary-light));
     color: white;
     padding: 15px 0;
     text-align: center;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     position: fixed;
     top: 0;
     width: 100%;
@@ -56,19 +43,19 @@ ul.sidenav {
     width: 240px;
     background-color: var(--white);
     position: fixed;
+    height: 100%;
     top: 50px;
-    /* Ajuste aqui: 100vh menos o valor do 'top' */
-    height: calc(100vh - 90px); 
+    height: calc(100vh - 90px);
     max-height: calc(100vh - 90px);
     border-right: 1px solid var(--border-color);
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.02);
     overflow-y: auto;
 }
 
 ul.sidenav li a {
     display: flex;
     align-items: center;
-    color: #b0bec5;
+    color: #555;
     padding: 12px 25px;
     text-decoration: none;
     transition: all 0.3s;
@@ -78,25 +65,23 @@ ul.sidenav li a {
 ul.sidenav li a i {
     margin-right: 15px;
     width: 20px;
-    color: var(--accent);
+    color: var(--primary);
 }
 
 ul.sidenav li a:hover {
-    background-color: #2e7d32;
-    /* Fundo verde escuro no hover */
-    color: #ffffff;
+    background-color: #e3f2fd; /* Azul sutil no hover */
+    color: var(--primary);
     padding-left: 30px;
 }
 
 ul.sidenav li a.active {
     background-color: var(--primary);
-    color: #121212;
-    /* Texto escuro no botão ativo para dar contraste */
+    color: white;
     font-weight: 600;
 }
 
 ul.sidenav li a.active i {
-    color: #121212;
+    color: white;
 }
 
 /* Botão Padrão do Sistema */
@@ -111,14 +96,11 @@ input[type="submit"] {
     padding: 5px 10px;
     border: none;
     border-radius: 6px;
-    /* Cantos levemente arredondados, moderno e limpo */
     cursor: pointer;
     transition: all 0.2s ease-in-out;
     text-decoration: none;
-    /* Caso use em tags <a> estilo botão */
 }
 
-/* Efeito de clique (reduz levemente o botão) */
 button:active,
 input[type="submit"]:active {
     transform: scale(0.98);
@@ -126,57 +108,43 @@ input[type="submit"]:active {
 
 button,
 input[type="submit"] {
-    background-color: #81c784;
-    /* Verde suave para o modo escuro */
-    color: #121212;
-    /* Texto escuro para alto contraste */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    background-color: #1976d2;
+    /* Azul principal */
+    color: #ffffff;
+    box-shadow: 0 2px 5px rgba(25, 118, 210, 0.2);
 }
 
 button:hover,
 input[type="submit"]:hover {
-    background-color: #a5d6a7;
-    /* Verde ainda mais suave no hover */
-    box-shadow: 0 4px 12px rgba(129, 199, 132, 0.2);
+    background-color: #2196f3;
+    /* Azul um pouco mais claro no hover */
+    box-shadow: 0 4px 8px rgba(25, 118, 210, 0.3);
 }
 
 input[type="text"] {
     width: 100%;
-    /* Ocupa todo o espaço disponível do container */
     max-width: 100%;
     box-sizing: border-box;
     font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
     font-size: 0.95rem;
     padding: 10px 14px;
     border-radius: 6px;
-    /* Mesmos cantos arredondados do botão */
     border: 1px solid;
-    /* A cor será definida abaixo */
     outline: none;
-    /* Remove a borda padrão do navegador */
     transition: all 0.2s ease-in-out;
-}
-
-input[type="text"] {
-    background-color: #1e1e1e;
-    /* Mesmo fundo dos cards/dialog escuros */
-    border-color: #3d863a;
-    /* Borda escura sutil */
-    color: #e0e0e0;
-    /* Texto claro */
+    background-color: #ffffff;
+    border-color: #90caf9; /* Borda azul suave */
+    color: #333333;
 }
 
 /* Quando o usuário clica para digitar */
 input[type="text"]:focus {
-    border-color: #81c784;
-    /* Verde suave do tema escuro */
-    box-shadow: 0 0 0 3px rgba(129, 199, 132, 0.15);
-    /* Brilho sutil verde */
+    border-color: #1976d2;
+    box-shadow: 0 0 0 3px rgba(25, 118, 210, 0.15);
 }
 
-/* Cor do texto de exemplo (placeholder) */
 input[type="text"]::placeholder {
-    color: #757575;
+    color: #999999;
 }
 
 select {
@@ -191,43 +159,27 @@ select {
     outline: none;
     cursor: pointer;
     transition: all 0.2s ease-in-out;
-
-    /* Remove a seta padrão feia do navegador para podermos padronizar */
     appearance: none;
     -webkit-appearance: none;
     -moz-appearance: none;
-
-    /* Adiciona uma setinha sutil via SVG no background */
     background-repeat: no-repeat;
     background-position: right 14px center;
     background-size: 12px;
     padding-right: 40px;
-    /* Garante que o texto não morda a seta */
-}
-
-select option {
-    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-    padding: 10px;
-}
-
-select {
-    background-color: #1e1e1e;
-    border-color: #3d863a;
-    color: #e0e0e0;
-    /* Seta clara em formato de "V" */
-    background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23e0e0e0' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-color: #ffffff;
+    border-color: #90caf9;
+    color: #333333;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23333333' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
 }
 
 select:focus {
-    border-color: #81c784;
-    /* Verde suave do tema escuro */
-    box-shadow: 0 0 0 3px rgba(129, 199, 132, 0.15);
+    border-color: #1976d2;
+    box-shadow: 0 0 0 3px rgba(25, 118, 210, 0.15);
 }
 
-/* Estilização interna da lista suspensa (previne fundo branco no Windows) */
 select option {
-    background-color: #1e1e1e;
-    color: #e0e0e0;
+    background-color: #ffffff;
+    color: #333333;
 }
 
 /* Container da Nota */
@@ -235,57 +187,42 @@ select option {
     padding: 16px 20px;
     margin: 25px 0;
     border-radius: 4px 8px 8px 4px;
-    /* Cantos esquerdos retos e direitos arredondados */
     border-left: 4px solid;
-    /* Barra lateral de destaque */
     font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
 }
 
-/* Título "Nota:" */
 .bloco-nota h3 {
     margin: 0 0 6px 0;
-    /* Remove margens excessivas */
     font-size: 1.05rem;
     font-weight: 700;
     letter-spacing: 0.5px;
 }
 
-/* Texto descritivo */
 .bloco-nota p {
     margin: 0;
-    /* Zera as margens para alinhar perfeitamente */
     font-size: 0.9rem;
     line-height: 1.5;
 }
 
 .bloco-nota {
-    background-color: #142416;
-    /* Fundo verde escuro confortável */
-    border-left-color: #81c784;
-    /* Barra no verde suave escuro */
+    background-color: #e3f2fd; /* Fundo azul sutil */
+    border-left-color: #1976d2; /* Barra no azul principal */
 }
 
 .bloco-nota h3 {
-    color: #81c784;
-    /* Título com o verde em destaque */
+    color: #1976d2;
 }
 
 .bloco-nota p {
-    color: #e0e0e0;
-    /* Texto claro padrão */
+    color: #0d47a1; /* Texto em azul escuro legível */
 }
 
 hr {
     border: none;
     height: 2px;
-    background-color: #4b4b4b;
+    background-color: #c4c4c4;
     width: 95%;
     margin: 20px auto;
-    /* Centraliza a linha */
-}
-
-th {
-    background-color: #414141;
 }
 
 table {
@@ -294,14 +231,8 @@ table {
     padding: 2%;
 }
 
-tr {
-    margin-left: 2%;
-    margin-right: 2%;
-}
-
 td {
-    border: var(--border-color) solid 1px;
-    /* Atualizado para usar a variável */
+    border: #333 solid 1px;
     border-radius: 2px;
 }
 
@@ -314,51 +245,46 @@ td.acoes {
     margin-inline: 5%;
 }
 
-/* Cores de botões ligeiramente ajustadas para não "ofuscarem" no escuro */
 .botaoTable_editar {
-    background-color: #4caf50;
-    color: white;
+    background-color: #42a5f5; /* Azul médio para editar */
+    color: #fff;
 }
 
 .botaoTable_excluir {
-    background-color: #e53935;
-    color: white;
+    background-color: #d64947d1;
+    color: #fff;
 }
 
 .botaoTable_editar:hover {
-    background-color: #66bb6a;
+    background-color: #1e88e5;
 }
 
 .botaoTable_excluir:hover {
-    background-color: #ef5350;
+    background-color: #f94643;
 }
 
-
+/* ==========================================================================
+   MODAL / DIALOG
+   ========================================================================== */
 dialog {
-    background-color: #121212;
-    /* Fundo escuro suave */
-    color: #e0e0e0;
-    /* Texto claro de alta legibilidade */
+    background-color: #ffffff;
+    color: #333333;
     border-radius: 12px;
     border: none;
     width: 90%;
     max-width: 400px;
     padding: 25px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-    /* Sombra mais profunda */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
     box-sizing: border-box;
 }
 
 dialog::backdrop {
-    background-color: rgba(0, 0, 0, 0.7);
-    /* Fundo um pouco mais escuro para o blur */
+    background-color: rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(4px);
 }
 
-/* Tipografia interna */
 .h2Dialog {
-    color: #81c784;
-    /* Verde claro adaptado para tema escuro */
+    color: #1976d2;
     text-align: center;
     margin-top: 0;
     font-size: 1.5rem;
@@ -366,8 +292,7 @@ dialog::backdrop {
 }
 
 .pDialog {
-    color: #b0bec5;
-    /* Cinza claro para o texto de apoio */
+    color: #555555;
     font-weight: 500;
     text-align: center;
     font-size: 0.95rem;
@@ -375,7 +300,6 @@ dialog::backdrop {
     margin: 10px 0;
 }
 
-/* Área de Ações */
 .botoesDialog {
     display: flex;
     justify-content: flex-end;
@@ -383,7 +307,6 @@ dialog::backdrop {
     margin-top: 25px;
 }
 
-/* Botões base */
 .botoesDialog button {
     font-family: inherit;
     font-size: 0.9rem;
@@ -396,37 +319,27 @@ dialog::backdrop {
 }
 
 #cancelar {
-    color: #e0e0e0;
-    background-color: #2c2c2c;
-    /* Cinza escuro neutro */
+    color: #555555;
+    background-color: #f1f1f1;
 }
 
 #cancelar:hover {
-    background-color: #383838;
+    background-color: #e4e4e4;
 }
 
 #excluir {
     color: white;
-    background-color: #e57373;
-    /* Vermelho mais suave, ideal para dark mode */
+    background-color: #d32f2f;
 }
 
 #excluir:hover {
-    background-color: #ef5350;
-    box-shadow: 0 2px 5px rgba(229, 115, 115, 0.4);
+    background-color: #b71c1c;
+    box-shadow: 0 2px 5px rgba(211, 47, 47, 0.4);
 }
 
 .logout {
     margin-top: 20px;
-    border-top: 1px solid #2c2c2c;
-    /* Divisor escuro sutil */
-}
-
-
-.logout {
-    margin-top: 20px;
-    border-top: 1px solid var(--border-color);
-    /* Removido #eee fixo */
+    border-top: 1px solid #eee;
 }
 
 /* Área de Conteúdo */
@@ -447,8 +360,7 @@ dialog::backdrop {
 }
 
 .welcome-section p {
-    color: #aaa;
-    /* Texto secundário mais claro */
+    color: #777;
     margin-top: 5px;
 }
 
@@ -464,13 +376,12 @@ dialog::backdrop {
     background: var(--white);
     border-radius: 12px;
     overflow: hidden;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
     border: 1px solid var(--border-color);
 }
 
 .card-header {
-    background-color: #252525;
-    /* Topo do card ligeiramente mais claro que o fundo */
+    background-color: #f8f9fa;
     padding: 15px 20px;
     font-weight: bold;
     border-bottom: 1px solid var(--border-color);
@@ -485,8 +396,7 @@ dialog::backdrop {
     display: flex;
     justify-content: space-between;
     padding: 10px 0;
-    border-bottom: 1px solid var(--border-color);
-    /* Removido #f9f9f9 */
+    border-bottom: 1px solid #f9f9f9;
 }
 
 .list-item {
@@ -494,13 +404,11 @@ dialog::backdrop {
     justify-content: space-between;
     padding: 8px 0;
     font-size: 0.9rem;
-    border-bottom: 1px dashed var(--border-color);
-    /* Removido #eee */
+    border-bottom: 1px dashed #eee;
 }
 
 .list-item span {
-    color: #ff5252;
-    /* Vermelho mais vivo para o modo escuro */
+    color: #e53935;
     font-size: 0.8rem;
     font-weight: bold;
 }

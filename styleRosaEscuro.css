@@ -52,6 +52,12 @@ ul.sidenav {
     border-right: 1px solid var(--border-color);
     box-shadow: 4px 0 10px rgba(0, 0, 0, 0.3);
     overflow-y: auto;
+    transition: all 0.3s ease-in-out;
+}
+
+ul.sidenav:hover{
+    padding-right: 5px; /* Pequeno ajuste para o hover */
+    box-shadow: 6px 0 30px rgba(252, 45, 131, 0.63);
 }
 
 ul.sidenav li a {
@@ -88,7 +94,7 @@ ul.sidenav li a.active i {
 
 /* Botão Padrão do Sistema */
 button,
-input[type="submit"] {
+input[type="submit"], input[type="date"], input[type="number"], textarea, select {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -121,7 +127,7 @@ input[type="submit"]:hover {
     box-shadow: 0 0 12px rgba(216, 27, 96, 0.5); /* Efeito neon sutil */
 }
 
-input[type="text"] {
+input[type="text"], input[type="date"], input[type="number"], textarea, select {
     width: 100%;
     max-width: 100%;
     box-sizing: border-box;
@@ -136,12 +142,20 @@ input[type="text"] {
     color: #ffffff;
 }
 
-input[type="text"]:focus {
+input[type="text"]:focus,
+input[type="date"]:focus,
+input[type="number"]:focus,
+textarea:focus,
+select:focus {
     border-color: var(--primary);
     box-shadow: 0 0 0 3px rgba(244, 143, 177, 0.25);
 }
 
-input[type="text"]::placeholder {
+input[type="text"]::placeholder,
+input[type="date"]::placeholder,
+input[type="number"]::placeholder,
+textarea::placeholder,
+select::placeholder {
     color: #666666;
 }
 
@@ -372,6 +386,11 @@ dialog::backdrop {
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
     border: 1px solid var(--border-color);
 }
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 10px rgba(212, 1, 131, 0.4);
+    transition: all 0.2s;
+}
 
 .card-header {
     background-color: #252525;
@@ -427,4 +446,40 @@ dialog::backdrop {
         margin-left: 0;
         margin-top: 20px;
     }
+}
+
+/* Container para organizar os radios lado a lado */
+.radio-group {
+    display: inline-flex;
+    align-items: center;
+    gap: 15px;
+    margin-top: 5px;
+}
+
+.radio-group {
+  border: 1px solid #444444;
+  background-color: #252525;
+  padding: 12px 14px;
+  border-radius: 6px;
+  margin: 15px 0;
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.radio-label {
+  color: var(--text-dark);
+  font-size: 0.95rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.radio-input {
+  cursor: pointer;
+  accent-color: var(--primary);
+  width: 16px;
+  height: 16px;
 }

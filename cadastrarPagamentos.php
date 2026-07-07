@@ -26,7 +26,7 @@ $mes = date('m');
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pagamentos</title>
     <?php
-    if($_SESSION['tema'] == 'verdeEscuro') { //VERDE ESCURO
+    if ($_SESSION['tema'] == 'verdeEscuro') { //VERDE ESCURO
         echo '<link rel="stylesheet" href="styleVerdeEscuro.css">';
     } else if ($_SESSION['tema'] == 'verdeClaro') { // VERDE CLARO
         echo '<link rel="stylesheet" href="styleVerdeClaro.css">';
@@ -44,9 +44,9 @@ $mes = date('m');
         echo '<link rel="stylesheet" href="styleVermelhoClaro.css">';
     } else if ($_SESSION['tema'] == 'amareloEscuro') { // AMARELO ESCURO
         echo '<link rel="stylesheet" href="styleAmareloEscuro.css">';
-    } else if ($_SESSION['tema'] == 'amareloClaro') {// AMARELO CLARO
+    } else if ($_SESSION['tema'] == 'amareloClaro') { // AMARELO CLARO
         echo '<link rel="stylesheet" href="styleAmareloClaro.css">';
-    } else {// PADRÃO
+    } else { // PADRÃO
         echo '<link rel="stylesheet" href="styleVerdeClaro.css">';
     }
     ?>
@@ -66,6 +66,7 @@ $mes = date('m');
         <li><a href="listarResponsaveis.php?id=<?php echo $id; ?>"><i class="fa-solid fa-user-tie"></i> Responsáveis</a>
         </li>
         <li><a href="listarEstagiario.php?id=<?php echo $id; ?>"><i class="fa-solid fa-user"></i> Estagiários</a></li>
+        <li><a class="active" href="cadastrarUsuario.php?id=<?php echo $id; ?>"><i class="fa-solid fa-user-shield"></i> Usuários</a></li>
         <hr>
         <li><a class="active" href="cadastrarPagamentos.php?id=<?php echo $id; ?>"><i
                     class="fa-solid fa-piggy-bank"></i> Mensalidades</a></li>

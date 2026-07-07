@@ -106,7 +106,7 @@ ul.sidenav li a.active i {
 
 /* Botão Padrão do Sistema */
 button,
-input[type="submit"] {
+input[type="submit"], input[type="date"], input[type="number"], textarea, select  {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -145,7 +145,7 @@ input[type="submit"]:hover {
     box-shadow: 0 4px 12px rgba(129, 199, 132, 0.2);
 }
 
-input[type="text"] {
+input[type="text"], input[type="date"], input[type="number"], textarea, select  {
     width: 100%;
     /* Ocupa todo o espaço disponível do container */
     max-width: 100%;
@@ -162,7 +162,7 @@ input[type="text"] {
     transition: all 0.2s ease-in-out;
 }
 
-input[type="text"] {
+input[type="text"], input[type="date"], input[type="number"], textarea, select  {
     background-color: #1e1e1e;
     /* Mesmo fundo dos cards/dialog escuros */
     border-color: #3d863a;
@@ -172,7 +172,7 @@ input[type="text"] {
 }
 
 /* Quando o usuário clica para digitar */
-input[type="text"]:focus {
+input[type="text"]:focus, input[type="date"]:focus, input[type="number"]:focus, textarea:focus, select:focus {
     border-color: #81c784;
     /* Verde suave do tema escuro */
     box-shadow: 0 0 0 3px rgba(129, 199, 132, 0.15);
@@ -473,6 +473,12 @@ dialog::backdrop {
     border: 1px solid var(--border-color);
 }
 
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 10px rgba(1, 212, 15, 0.4);
+    transition: all 0.2s;
+}
+
 .card-header {
     background-color: #252525;
     /* Topo do card ligeiramente mais claro que o fundo */
@@ -529,4 +535,40 @@ dialog::backdrop {
         margin-left: 0;
         margin-top: 20px;
     }
+}
+
+/* Container para organizar os radios lado a lado */
+.radio-group {
+    display: inline-flex;
+    align-items: center;
+    gap: 15px;
+    margin-top: 5px;
+}
+
+.radio-group {
+  border: 1px solid #444444;
+  background-color: #252525;
+  padding: 12px 14px;
+  border-radius: 6px;
+  margin: 15px 0;
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.radio-label {
+  color: var(--text-dark);
+  font-size: 0.95rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.radio-input {
+  cursor: pointer;
+  accent-color: var(--primary);
+  width: 16px;
+  height: 16px;
 }

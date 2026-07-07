@@ -1,13 +1,22 @@
 :root {
-    --primary: #90caf9; /* Azul claro neon para contraste no tema escuro */
-    --primary-light: #42a5f5; /* Tom intermediário para gradientes */
-    --accent: #29b6f6; /* Destaques */
-    --bg-body: #121212; /* Fundo principal escuro */
-    --bg-surface: #1e1e1e; /* Fundo de elementos (cards, sidebar, inputs) */
-    --text-dark: #e0e0e0; /* Texto claro principal */
-    --text-muted: #a0a0a0; /* Texto secundário atenuado */
-    --white: #1e1e1e; /* Substituído o branco pelo fundo de superfície */
-    --border-color: #333333; /* Bordas mais escuras e sutis */
+    --primary: #90caf9;
+    /* Azul claro neon para contraste no tema escuro */
+    --primary-light: #42a5f5;
+    /* Tom intermediário para gradientes */
+    --accent: #29b6f6;
+    /* Destaques */
+    --bg-body: #121212;
+    /* Fundo principal escuro */
+    --bg-surface: #1e1e1e;
+    /* Fundo de elementos (cards, sidebar, inputs) */
+    --text-dark: #e0e0e0;
+    /* Texto claro principal */
+    --text-muted: #a0a0a0;
+    /* Texto secundário atenuado */
+    --white: #1e1e1e;
+    /* Substituído o branco pelo fundo de superfície */
+    --border-color: #333333;
+    /* Bordas mais escuras e sutis */
 }
 
 body {
@@ -19,7 +28,8 @@ body {
 
 /* Header Moderno */
 header {
-    background: linear-gradient(135deg, #1565c0, #0d47a1); /* Tons de azul escuro e profundo */
+    background: linear-gradient(135deg, #1565c0, #0d47a1);
+    /* Tons de azul escuro e profundo */
     color: #ffffff;
     padding: 15px 0;
     text-align: center;
@@ -52,6 +62,12 @@ ul.sidenav {
     border-right: 1px solid var(--border-color);
     box-shadow: 4px 0 10px rgba(0, 0, 0, 0.3);
     overflow-y: auto;
+    transition: all 0.3s ease-in-out;
+}
+
+ul.sidenav:hover{
+    padding-right: 5px; /* Pequeno ajuste para o hover */
+    box-shadow: 6px 0 30px rgba(45, 169, 252, 0.63);
 }
 
 ul.sidenav li a {
@@ -71,13 +87,15 @@ ul.sidenav li a i {
 }
 
 ul.sidenav li a:hover {
-    background-color: rgba(144, 202, 249, 0.1); /* Hover sutil com transparência azul */
+    background-color: rgba(144, 202, 249, 0.1);
+    /* Hover sutil com transparência azul */
     color: var(--primary);
     padding-left: 30px;
 }
 
 ul.sidenav li a.active {
-    background-color: #1976d2; /* Fundo azul sólido para o item ativo */
+    background-color: #1976d2;
+    /* Fundo azul sólido para o item ativo */
     color: #ffffff;
     font-weight: 600;
 }
@@ -88,7 +106,7 @@ ul.sidenav li a.active i {
 
 /* Botão Padrão do Sistema */
 button,
-input[type="submit"] {
+input[type="submit"], input[type="date"], input[type="number"], textarea, select {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -104,8 +122,12 @@ input[type="submit"] {
 }
 
 button:active,
-input[type="submit"]:active {
+input[type="submit"]:active{
     transform: scale(0.98);
+}
+
+input[type="date"] {
+    float: left;
 }
 
 button,
@@ -121,7 +143,7 @@ input[type="submit"]:hover {
     box-shadow: 0 4px 12px rgba(33, 150, 243, 0.3);
 }
 
-input[type="text"] {
+input[type="text"], input[type="date"], input[type="number"], textarea, select {
     width: 100%;
     max-width: 100%;
     box-sizing: border-box;
@@ -138,12 +160,12 @@ input[type="text"] {
 }
 
 /* Quando o usuário clica para digitar */
-input[type="text"]:focus {
+input[type="text"]:focus, input[type="date"]:focus, input[type="number"]:focus, textarea:focus, select:focus {
     border-color: var(--primary);
     box-shadow: 0 0 0 3px rgba(144, 202, 249, 0.2);
 }
 
-input[type="text"]::placeholder {
+input[type="text"]::placeholder, input[type="date"]::placeholder, input[type="number"]::placeholder, textarea::placeholder, select::placeholder {
     color: #666666;
 }
 
@@ -190,7 +212,8 @@ select option {
     border-radius: 4px 8px 8px 4px;
     border-left: 4px solid;
     font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-    background-color: rgba(25, 118, 210, 0.15); /* Fundo azul escuro translúcido */
+    background-color: rgba(25, 118, 210, 0.15);
+    /* Fundo azul escuro translúcido */
     border-left-color: var(--primary);
 }
 
@@ -375,6 +398,12 @@ dialog::backdrop {
     border: 1px solid var(--border-color);
 }
 
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 10px rgba(1, 159, 212, 0.4);
+    transition: all 0.2s;
+}
+
 .card-header {
     background-color: #252525;
     padding: 15px 20px;
@@ -403,7 +432,8 @@ dialog::backdrop {
 }
 
 .list-item span {
-    color: #ff5252; /* Vermelho mais brilhante para o tema escuro */
+    color: #ff5252;
+    /* Vermelho mais brilhante para o tema escuro */
     font-size: 0.8rem;
     font-weight: bold;
 }
@@ -429,4 +459,40 @@ dialog::backdrop {
         margin-left: 0;
         margin-top: 20px;
     }
+}
+
+/* Container para organizar os radios lado a lado */
+.radio-group {
+    display: inline-flex;
+    align-items: center;
+    gap: 15px;
+    margin-top: 5px;
+}
+
+.radio-group {
+  border: 1px solid #444444;
+  background-color: #252525;
+  padding: 12px 14px;
+  border-radius: 6px;
+  margin: 15px 0;
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.radio-label {
+  color: var(--text-dark);
+  font-size: 0.95rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.radio-input {
+  cursor: pointer;
+  accent-color: var(--primary);
+  width: 16px;
+  height: 16px;
 }

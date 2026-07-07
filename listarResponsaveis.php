@@ -53,10 +53,11 @@ include "conecta.php";
         <li><a href="listarAlunos.php?id=<?php echo $id; ?>"><i class="fa-solid fa-user-group"></i> Alunos</a></li>
         <li><a class="active" href="listarResponsaveis.php?id=<?php echo $id; ?>"><i class="fa-solid fa-user-tie"></i> Responsáveis</a></li>
         <li><a href="listarEstagiario.php?id=<?php echo $id; ?>"><i class="fa-solid fa-user"></i> Estagiários</a></li>
+        <li><a href="cadastrarUsuario.php?id=<?php echo $id; ?>"><i class="fa-solid fa-user-shield"></i> Usuários</a></li>
         <hr>
         <div style="padding: 10px;"><span style="font-size:20px;">Valores</span></div>
         <li><a href="listarMensalidades.php?id=<?php echo $id; ?>"><i class="fa-solid fa-piggy-bank"></i> Mensalidades</a></li>
-        <li><a href="despesas.php?id=<?php echo $id; ?>"><i class="fa-solid fa-brazilian-real-sign"></i> Despesas</a></li>
+        <li><a href="arrecadacao.php?id=<?php echo $id; ?>"><i class="fa-solid fa-hand-holding-dollar"></i> Arrecadação</a></li>
         <hr>
         <div style="padding: 10px;"><span style="font-size:20px;">Gestão</span></div>
         <li><a href="relatorios.php?id=<?php echo $id; ?>"><i class="fa-regular fa-clipboard"></i> Relatórios</a></li>

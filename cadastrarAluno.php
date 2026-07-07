@@ -32,7 +32,7 @@ if ($_POST) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>S.I.G.C.</title>
     <?php
-    if($_SESSION['tema'] == 'verdeEscuro') { //VERDE ESCURO
+    if ($_SESSION['tema'] == 'verdeEscuro') { //VERDE ESCURO
         echo '<link rel="stylesheet" href="styleVerdeEscuro.css">';
     } else if ($_SESSION['tema'] == 'verdeClaro') { // VERDE CLARO
         echo '<link rel="stylesheet" href="styleVerdeClaro.css">';
@@ -50,9 +50,9 @@ if ($_POST) {
         echo '<link rel="stylesheet" href="styleVermelhoClaro.css">';
     } else if ($_SESSION['tema'] == 'amareloEscuro') { // AMARELO ESCURO
         echo '<link rel="stylesheet" href="styleAmareloEscuro.css">';
-    } else if ($_SESSION['tema'] == 'amareloClaro') {// AMARELO CLARO
+    } else if ($_SESSION['tema'] == 'amareloClaro') { // AMARELO CLARO
         echo '<link rel="stylesheet" href="styleAmareloClaro.css">';
-    } else {// PADRÃO
+    } else { // PADRÃO
         echo '<link rel="stylesheet" href="styleVerdeClaro.css">';
     }
     ?>
@@ -67,8 +67,8 @@ if ($_POST) {
         <li><a href="index.php?id=<?php echo $id; ?>"><i class="fa-solid fa-house"></i> Início</a></li>
         <hr>
         <div style="padding: 10px;"><span style="font-size:20px;">Pessoas</span></div>
-        <li><a href="listarAlunos.php?id=<?php echo $id; ?>"><i class="fa-solid fa-user-group"></i> Alunos</a></li>
-        <li><a class="active" href="listarResponsaveis.php?id=<?php echo $id; ?>"><i class="fa-solid fa-user-tie"></i> Responsáveis</a></li>
+        <li><a class="active" href="listarAlunos.php?id=<?php echo $id; ?>"><i class="fa-solid fa-user-group"></i> Alunos</a></li>
+        <li><a href="listarResponsaveis.php?id=<?php echo $id; ?>"><i class="fa-solid fa-user-tie"></i> Responsáveis</a></li>
         <li><a href="listarEstagiario.php?id=<?php echo $id; ?>"><i class="fa-solid fa-user"></i> Estagiários</a></li>
         <li><a href="cadastrarUsuario.php?id=<?php echo $id; ?>"><i class="fa-solid fa-user-shield"></i> Usuários</a></li>
         <hr>
@@ -90,26 +90,71 @@ if ($_POST) {
         <div class="main-wrapper">
             <div class="content">
                 <div class="card">
-                    <div class="card-header">Informe as credenciais do novo Responsável</div>
+                    <div class="card-header">Informe as credenciais do novo Aluno</div>
                     <div class="card-body">
                         <label>
                             <p>Nome completo: <span style="color:red;">*</span><br><input type="text" name="nome" required></p>
                         </label>
                         <label>
-                            <p>Número de telefone (WhatsApp): <span style="color:red;">*</span><br><input type="text" name="telefone" required></p>
+                            <p>Nome de Guerra: <span style="color:red;">*</span><br><input type="text" name="nomeGuerra" required></p>
                         </label>
                         <label>
-                            <p>Aluno subordinado:<br>
-                                <select name="alunoSubordinado">
-                                    <option> Selecione </option>
-                                    <?php
-                                    while ($dadosAluno = mysqli_fetch_assoc($resultadoAlunos)) {
-                                        echo '<option value=' . $dadosAluno['id'] . '> ' . $dadosAluno['nome'] . '</option>';
-                                    }
-                                    ?>
+                            <p>Número: <span style="color:red;">*</span><br><input type="text" name="numero" required></p>
+                        </label>
+                        <label>
+                            <p>Graduação:<br>
+                                <select name="graduacao">
+                                    <option value="" disabled selected></option>
+                                    <option value="Coronel"> Coronel </option>
+                                    <option value="Tenente-Coronel"> Tenente-Coronel </option>
+                                    <option value="Major"> Major </option>
+                                    <option value="Capitão"> Capitão </option>
+                                    <option value="1º Tenente"> 1º Tenente </option>
+                                    <option value="2º Tenente"> 2º Tenente </option>
+                                    <option value="1º Sargento"> 1º Sargento </option>
+                                    <option value="2º Sargento"> 2º Sargento </option>
+                                    <option value="3º Sargento"> 3º Sargento </option>
+                                    <option value="Cabo"> Cabo </option>
+                                    <option value="Soldado"> Soldado </option>
                                 </select>
                             </p>
                         </label>
+                        <label>
+                            <p>Pelotão:<br>
+                                <select name="pelotao">
+                                    <option value="" disabled selected></option>
+                                    <option value="Cobra">Cobra</option>
+                                    <option value="Aguia">Aguia</option>
+                                    <option value="Leão">Leão</option>
+                                    <option value="Tigre">Tigre</option>
+                                    <option value="Falcão">Falcão</option>
+                                </select>
+                            </p>
+                        </label>
+                        <label>
+                            <p>Em estágio?<br>
+                            <fieldset class="radio-group">
+                                <label class="radio-label">
+                                    <input type="radio" name="estagio" value="Sim" class="radio-input"> Sim
+                                </label>
+                                <label class="radio-label">
+                                    <input type="radio" name="estagio" value="Não" class="radio-input"> Não
+                                </label>
+                            </fieldset>
+                            </p>
+                        </label>
+                        <label>
+                            <p>Formado Monitor?<br>
+                            <fieldset class="radio-group">
+                                <label class="radio-label">
+                                    <input type="radio" name="monitor" value="Sim" class="radio-input"> Sim
+                                </label>
+                                <label class="radio-label">
+                                    <input type="radio" name="monitor" value="Não" class="radio-input"> Não
+                                </label>
+                            </fieldset>
+                        </label>
+                        <hr>
                         <input type="submit" value="Cadastrar">
                         <br>
                     </div>
@@ -118,4 +163,5 @@ if ($_POST) {
     </form>
 
 </body>
+
 </html>

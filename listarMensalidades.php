@@ -11,7 +11,7 @@ $id = $_SESSION['id'];
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mensalidades</title>
     <?php
-    if($_SESSION['tema'] == 'verdeEscuro') { //VERDE ESCURO
+    if ($_SESSION['tema'] == 'verdeEscuro') { //VERDE ESCURO
         echo '<link rel="stylesheet" href="styleVerdeEscuro.css">';
     } else if ($_SESSION['tema'] == 'verdeClaro') { // VERDE CLARO
         echo '<link rel="stylesheet" href="styleVerdeClaro.css">';
@@ -23,15 +23,7 @@ $id = $_SESSION['id'];
         echo '<link rel="stylesheet" href="styleRosaEscuro.css">';
     } else if ($_SESSION['tema'] == 'rosaClaro') { // ROSA CLARO
         echo '<link rel="stylesheet" href="styleRosaClaro.css">';
-    } else if ($_SESSION['tema'] == 'vermelhoEscuro') { // VERMELHO ESCURO
-        echo '<link rel="stylesheet" href="styleVermelhoEscuro.css">';
-    } else if ($_SESSION['tema'] == 'vermelhoClaro') { // VERMELHO CLARO
-        echo '<link rel="stylesheet" href="styleVermelhoClaro.css">';
-    } else if ($_SESSION['tema'] == 'amareloEscuro') { // AMARELO ESCURO
-        echo '<link rel="stylesheet" href="styleAmareloEscuro.css">';
-    } else if ($_SESSION['tema'] == 'amareloClaro') {// AMARELO CLARO
-        echo '<link rel="stylesheet" href="styleAmareloClaro.css">';
-    } else {// PADRÃO
+    } else { // PADRÃO
         echo '<link rel="stylesheet" href="styleVerdeClaro.css">';
     }
     ?>
@@ -47,33 +39,69 @@ $id = $_SESSION['id'];
     </header>
     <ul class="sidenav">
         <li><a href="index.php?id=<?php echo $id; ?>"><i class="fa-solid fa-house"></i> Início</a></li>
-        <hr><div style="padding: 10px;"><span style="font-size:20px;">Pessoas</span></div>
+        <hr>
+        <div style="padding: 10px;"><span style="font-size:20px;">Pessoas</span></div>
         <li><a href="listarAlunos.php?id=<?php echo $id; ?>"><i class="fa-solid fa-user-group"></i> Alunos</a></li>
         <li><a href="listarResponsaveis.php?id=<?php echo $id; ?>"><i class="fa-solid fa-user-tie"></i> Responsáveis</a></li>
         <li><a href="listarEstagiario.php?id=<?php echo $id; ?>"><i class="fa-solid fa-user"></i> Estagiários</a></li>
-        <hr><div style="padding: 10px;"><span style="font-size:20px;">Valores</span></div>
+        <li><a href="cadastrarUsuario.php?id=<?php echo $id; ?>"><i class="fa-solid fa-user-shield"></i> Usuários</a></li>
+        <hr>
+        <div style="padding: 10px;"><span style="font-size:20px;">Valores</span></div>
         <li><a class="active" href="listarMensalidades.php?id=<?php echo $id; ?>"><i class="fa-solid fa-piggy-bank"></i> Mensalidades</a></li>
-        <li><a href="despesas.php?id=<?php echo $id; ?>"><i class="fa-solid fa-brazilian-real-sign"></i> Despesas</a></li>
-        <hr><div style="padding: 10px;"><span style="font-size:20px;">Gestão</span></div>
+        <li><a href="arrecadacao.php?id=<?php echo $id; ?>"><i class="fa-solid fa-hand-holding-dollar"></i> Arrecadação</a></li>
+        <hr>
+        <div style="padding: 10px;"><span style="font-size:20px;">Gestão</span></div>
         <li><a href="relatorios.php?id=<?php echo $id; ?>"><i class="fa-regular fa-clipboard"></i> Relatórios</a></li>
         <li><a href="listarAnotacoes.php?id=<?php echo $id; ?>"><i class="fa-solid fa-note-sticky"></i> Anotações</a></li>
-        <hr><div style="padding: 10px;"><span style="font-size:20px;">Configurações</span></div>
+        <hr>
+        <div style="padding: 10px;"><span style="font-size:20px;">Configurações</span></div>
         <li><a href="configuracoesUser.php"><i class="fa-solid fa-gear"></i> Preferências</a></li>
         <hr>
         <li><a href="destruirSessao.php"><i class="fa-solid fa-right-from-bracket"></i> Sair</a></li>
     </ul>
     <div class="main-wrapper">
-        <div
-            style="display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 200px; padding: 30px; margin: 20px auto; max-width: 500px; background-color: #dbffcd; border: 1px solid #ffeeba; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); text-align: center; font-family: sans-serif;">
-            <i class="fa-solid fa-triangle-exclamation" style="color: rgb(0, 107, 146); width: 20px;"></i>
+        <div class="card">
+            <div class="card-header"> Registrar Mensalidade </div>
 
-            <h3 style="margin: 0 0 10px 0; color: #1a8504; font-size: 1.4rem;">
-                Setor em manutenção!
-            </h3>
-
-            <p style="margin: 0; color: #1a8504; font-size: 1rem; line-height: 1.5;">
-                Aguarde essa funcionalidade ser lançada. Pode ser que demore... <br> pegue um café!
-            </p>
+            <div class="card-body">
+                <div class="bloco-nota">
+                    <h3>Nota:</h3>
+                    <p>O Sistema reconhece se a mensalidade está em atraso ou em dia de acordo com a data fornecida.</p>
+                    <p>Ou seja, sabendo o segundo sábado do mês, o sistema identifica automaticamente o status da mensalidade.</p>
+                    <p>Caso o aluno selecionado não possua nenhuma mensalidade atrasada, o sistema irá manter ele na lista de adimplência.</p>
+                </div>
+                <hr>
+                <form action="salvarMensalidade.php" method="POST">
+                    <label>
+                        <p>Efetuado em:</p>
+                        <input type="date" name="data" required>
+                    </label>
+                    <label>
+                        <p>Valor:</p>
+                        <input type="number" name="valor" value="150" step="0.01" required>
+                    </label>
+                    <label>
+                        <p>Aluno:</p>
+                        <select name="aluno" required>
+                            <option value="" disabled selected>Selecione um aluno</option>
+                            <?php
+                            include 'conecta.php';
+                            $sql = "SELECT * FROM aluno";
+                            $result = mysqli_query($conn, $sql);
+                            while ($dadosAluno = mysqli_fetch_assoc($result)) {
+                                echo '<option value="' . $dadosAluno['id'] . '">' . $dadosAluno['nome'] . '</option>';
+                            }
+                            ?>
+                            </select>
+                    </label>
+                    <label>
+                        <p>Observação:</p>
+                        <textarea name="observacao" rows="6" cols="50" placeholder='Deixe uma mensagem nesse pagamento. Exemplo: "Pago no pix por Fulano"..' required></textarea>
+                    </label>
+                    <hr>
+                        <input type="submit" value="Registrar" class="btn-salvar">
+                </form>
+            </div>
         </div>
     </div>
 
